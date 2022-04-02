@@ -5,9 +5,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="Finaxo - Business and Finance HTML5 Template" />
-    <meta name="author" content="potenzaglobalsolutions.com" />
+    <meta name="keywords" content="LSP PPHI" />
+    <meta name="description" content="LSP PPHI" />
+    <meta name="author" content="LSP PPHI" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Finaxo - Business and Finance HTML5 Template</title>
 
