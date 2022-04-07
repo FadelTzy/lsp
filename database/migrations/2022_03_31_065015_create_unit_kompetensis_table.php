@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('unit_kompetensis', function (Blueprint $table) {
             $table->id();
-            $table->integer('kd_unit');
+            $table->string('kd_unit');
+            $table->string('id_skema');
             $table->string('judul');
             $table->timestamps();
         });

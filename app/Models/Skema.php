@@ -9,4 +9,8 @@ class Skema extends Model
 {
     protected $guarded = [];
     use HasFactory;
+    public function unit()
+    {
+        return $this->hasOne(UnitKompetensi::class, 'id_skema', 'id');
+    }
 }

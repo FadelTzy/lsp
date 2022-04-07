@@ -48,6 +48,9 @@
                         <li class="active"><a href="#home4" data-toggle="tab"><strong>Profil LSP</strong></a></li>
                         <li><a href="#profile4" data-toggle="tab"><strong>Kontak LSP</strong></a></li>
                         <li><a href="#about4" data-toggle="tab"><strong>Anggota</strong></a></li>
+                        <li><a href="#link" data-toggle="tab"><strong>Link Daftar</strong></a></li>
+                        <li><a href="#ib" data-toggle="tab"><strong>Informasi Beranda</strong></a></li>
+
                     </ul>
 
                     <!-- Tab panes -->
@@ -259,8 +262,137 @@
                                 </div><!-- col-md-6 -->
                             </div><!-- row -->
                         </div><!-- tab-pane -->
+                        <div class="tab-pane" id="link">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+
+                                            <h4 class="panel-title">Link Registrasi</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <form id="formdatal" action="">
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Link </label>
+                                                            <input type="text" name="link"
+                                                                value="{{ $profil->linkregister }}"
+                                                                placeholder="Input Link" class="form-control" />
+                                                        </div><!-- form-group -->
+                                                    </div><!-- col-sm-6 -->
 
 
+                                                </form>
+                                            </div><!-- row -->
+
+
+                                        </div><!-- panel-body -->
+                                        <div class="panel-footer text-right">
+                                            <button id="simpandatal" class="btn btn-primary"> Simpan</button>
+                                        </div><!-- panel-footer -->
+                                    </div><!-- panel -->
+
+                                </div><!-- col-md-6 -->
+                            </div><!-- row -->
+                        </div><!-- tab-pane -->
+                        <div class="tab-pane" id="ib">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+
+                                            <h4 class="panel-title">Informasi Beranda</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <form id="formdatab" action="">
+                                                    <input type="hidden" name="id" value="{{ $tentang->id }}">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Judul Informasi </label>
+                                                            <input type="text" name="judul"
+                                                                value="{{ $tentang->judul ?? '-' }}"
+                                                                placeholder="Input judul" class="form-control" />
+                                                        </div><!-- form-group -->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Deskripsi </label>
+                                                            <textarea class="form-control" name="isi" id="" cols="30" rows="5">{{ $tentang->isi ?? '-' }}</textarea>
+                                                        </div><!-- form-group -->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Nama Ketua </label>
+                                                            <input type="text" name="nama"
+                                                                value="{{ $tentang->nama ?? '-' }}"
+                                                                placeholder="Input Nama" class="form-control" />
+                                                        </div><!-- form-group -->
+                                                    </div><!-- col-sm-6 -->
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Gambar 1
+                                                                @if ($tentang->foto1 == null)
+                                                                    <span class="text-danger">* File tidak ada</span>
+                                                                @else
+                                                                    <span class="text-success">* File ada</span>
+                                                                @endif
+                                                            </label>
+                                                            <input type="file" name="foto1" class="form-control" />
+                                                            @if ($tentang->foto1 != null)
+                                                                <a type="button"
+                                                                    href="{{ asset('gambar/beranda/') . '/' . $tentang->foto1 }}"
+                                                                    target="_blank" class="btn btn-sm btn-primary">Cek
+                                                                    Gambar</a>
+                                                            @endif
+
+                                                        </div><!-- form-group -->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Gambar 2
+                                                                @if ($tentang->foto2 == null)
+                                                                    <span class="text-danger">* File tidak ada</span>
+                                                                @else
+                                                                    <span class="text-success">* File ada</span>
+                                                                @endif
+                                                            </label>
+
+                                                            <input type="file" name="foto2" class="form-control" />
+                                                            @if ($tentang->foto2 != null)
+                                                                <a type="button"
+                                                                    href="{{ asset('gambar/beranda/') . '/' . $tentang->foto2 }}"
+                                                                    target="_blank" class="btn btn-sm btn-primary">Cek
+                                                                    Gambar</a>
+                                                            @endif
+                                                        </div><!-- form-group -->
+                                                        <div class="form-group">
+                                                            <label class="control-label">Gambar TTD
+                                                                @if ($tentang->ttd == null)
+                                                                    <span class="text-danger">* File tidak ada</span>
+                                                                @else
+                                                                    <span class="text-success">* File ada</span>
+                                                                @endif
+                                                            </label>
+                                                            <input type="file" name="ttd" class="form-control" />
+                                                            @if ($tentang->ttd != null)
+                                                                <a type="button"
+                                                                    href="{{ asset('gambar/beranda/') . '/' . $tentang->ttd }}"
+                                                                    target="_blank" class="btn btn-sm btn-primary">Cek
+                                                                    Gambar</a>
+                                                            @endif
+                                                        </div><!-- form-group -->
+                                                    </div>
+
+
+                                                </form>
+                                            </div><!-- row -->
+
+
+                                        </div><!-- panel-body -->
+                                        <div class="panel-footer text-right">
+                                            <button id="simpandatab" class="btn btn-primary"> Simpan</button>
+                                        </div><!-- panel-footer -->
+                                    </div><!-- panel -->
+
+                                </div><!-- col-md-6 -->
+                            </div><!-- row -->
+                        </div><!-- tab-pane -->
                     </div><!-- tab-content -->
 
                 </div><!-- col-md-6 -->
@@ -392,6 +524,12 @@
         $("#simpandatak").on('click', function() {
             $("#formdatak").trigger('submit');
         });
+        $("#simpandatab").on('click', function() {
+            $("#formdatab").trigger('submit');
+        });
+        $("#simpandatal").on('click', function() {
+            $("#formdatal").trigger('submit');
+        });
         $("#submitdataanggota").on('click', function() {
             $("#formanggota").trigger('submit');
         });
@@ -446,6 +584,90 @@
             $.LoadingOverlay("show");
             $.ajax({
                 url: '{{ route('profil-lsp.storek') }}',
+                data: new FormData(this),
+                type: "POST",
+                contentType: false,
+                processData: false,
+                success: function(id) {
+                    console.log(id);
+                    $.LoadingOverlay("hide");
+                    if (id.status == 'error') {
+                        var data = id.data;
+                        var elem;
+                        var result = Object.keys(data).map((key) => [data[key]]);
+                        elem =
+                            '<div class="alert alert-danger alert-dismissible  show mt-3" role="alert">';
+                        elem +=
+                            '   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button><ul>';
+                        result.forEach(function(data) {
+                            elem += '<li>' + data[0][0] + '</li>';
+                        });
+                        elem += '</ul></div>';
+                        $("#listnotif").html(elem);
+                        $("#listnotif").addClass('mt-2');
+                        console.log(elem)
+
+                    } else {
+                        $('#suksesnotifu').html(
+                            '<div class="alert alert-success mt-2 alert-dismissible  rounded " id="suksesnotifu" role="alert">    <strong>Berhasil Menambah Data</strong>    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+                        );
+                        $("#listnotif").html('');
+                        location.reload();
+
+                    }
+                }
+            })
+
+
+        });
+        $("#formdatab").on('submit', function(id) {
+            id.preventDefault();
+            var data = $(this).serialize();
+            $.LoadingOverlay("show");
+            $.ajax({
+                url: '{{ route('profil-lsp.storeb') }}',
+                data: new FormData(this),
+                type: "POST",
+                contentType: false,
+                processData: false,
+                success: function(id) {
+                    console.log(id);
+                    $.LoadingOverlay("hide");
+                    if (id.status == 'error') {
+                        var data = id.data;
+                        var elem;
+                        var result = Object.keys(data).map((key) => [data[key]]);
+                        elem =
+                            '<div class="alert alert-danger alert-dismissible  show mt-3" role="alert">';
+                        elem +=
+                            '   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span> </button><ul>';
+                        result.forEach(function(data) {
+                            elem += '<li>' + data[0][0] + '</li>';
+                        });
+                        elem += '</ul></div>';
+                        $("#listnotif").html(elem);
+                        $("#listnotif").addClass('mt-2');
+                        console.log(elem)
+
+                    } else {
+                        $('#suksesnotifu').html(
+                            '<div class="alert alert-success mt-2 alert-dismissible  rounded " id="suksesnotifu" role="alert">    <strong>Berhasil Menambah Data</strong>    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+                        );
+                        $("#listnotif").html('');
+                        location.reload();
+
+                    }
+                }
+            })
+
+
+        });
+        $("#formdatal").on('submit', function(id) {
+            id.preventDefault();
+            var data = $(this).serialize();
+            $.LoadingOverlay("show");
+            $.ajax({
+                url: '{{ route('profil-lsp.storel') }}',
                 data: new FormData(this),
                 type: "POST",
                 contentType: false,

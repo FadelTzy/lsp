@@ -138,7 +138,7 @@
     <script src="{{ asset('chain/js/bootstrap-wysihtml5.js') }}"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ">
     </script>
     <script>
         $.ajaxSetup({
@@ -175,7 +175,7 @@
             height: 400,
             filebrowserUploadUrl: '{{ route('ckeditor.image', ['_token' => csrf_token()]) }}'
         });
-        CKEDITOR.instances['ckeditor'].setData("{!! $data->deskripsi !!}");
+        CKEDITOR.instances['ckeditor'].setData(`{!! $data->deskripsi !!}`);
 
         $("#tambahdata").on('submit', function(id) {
             $("#tempatsinggah2").val(getDe.getData());

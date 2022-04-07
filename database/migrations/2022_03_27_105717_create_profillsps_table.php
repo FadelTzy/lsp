@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('ig')->nullable();
             $table->string('twitter')->nullable();
             $table->string('wa')->nullable();
+            $table->text('linkregister')->nullable();
+
 
             $table->timestamps();
         });

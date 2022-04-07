@@ -47,18 +47,20 @@
                             href="{{ url('admin/prosedur-uji-kompetensi') }}">PUK</a></li>
                     <li class="{{ Request::is('admin/link') ? 'active' : '' }}"><a
                             href="{{ url('admin/link') }}">Link</a></li>
+                    <li class="{{ Request::is('admin/banner') ? 'active' : '' }}"><a
+                            href="{{ url('admin/banner') }}">Banner</a></li>
                 </ul>
             </li>
-            <li class="{{ Request::segment(2) == 'data-gtk' ? 'active' : '' }}"><a
-                    href="{{ url('admin/data-gtk') }}"><i class="fa fa-users"></i> <span>Manajemen
+            <li class="{{ Request::segment(2) == 'skema' ? 'active' : '' }}"><a href="{{ url('admin/skema') }}"><i
+                        class="fa fa-users"></i> <span>Manajemen
                         Skema</span></a></li>
             <h5 class="leftpanel-title">Manajemen User</h5>
 
-            <li class="{{ Request::segment(2) == 'kinerja-gtk' ? 'active' : '' }}"><a
-                    href="{{ url('admin/kinerja-gtk') }}"><i class="fa fa-file"></i> <span>Profil User</span></a>
+            <li class="{{ Request::segment(2) == 'profil' ? 'active' : '' }}"><a
+                    href="{{ url('admin/profil') }}"><i class="fa fa-file"></i> <span>Profil User</span></a>
             </li>
-            <li class="{{ Request::segment(2) == 'kinerja-gtk' ? 'active' : '' }}"><a
-                    href="{{ url('admin/kinerja-gtk') }}"><i class="fa fa-file"></i> <span>User</span></a></li>
+            <li class="{{ Request::segment(2) == 'user' ? 'active' : '' }}"><a href="{{ url('admin/user') }}"><i
+                        class="fa fa-file"></i> <span>User</span></a></li>
         @endif
         @if (Auth::user()->role == '2')
         @endif

@@ -142,6 +142,7 @@ return [
          * Laravel Framework Service Providers...
          */
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,

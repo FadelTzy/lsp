@@ -5,82 +5,78 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="footer-contact-address">
+
                     <h6 class="text-white mb-4">Where To Find Us </h6>
                     <ul class="list-unstyled">
                         <li>
                             <i class="fas fa-map-signs mt-2"></i>
                             <div class="address-info">
-                                <h6>17504 Carlton Cuevas Rd </h6>
-                                <p>Gulfport, MS, 39503 </p>
+                                <h6>Alamat </h6>
+                                <p> {{ Cache::get('tl')[0]->alamat }} </p>
                             </div>
                         </li>
                         <li>
                             <i class="far fa-envelope mt-2"></i>
                             <div class="address-info">
-                                <h6>letstalk@finaxo.com </h6>
-                                <p>Mon-Fri 8:30am-6:30pm </p>
+                                <h6>Email</h6>
+                                <p> {{ Cache::get('tl')[0]->email }} Mon-Fri 8:30am-6:30pm </p>
                             </div>
                         </li>
                         <li>
                             <i class="fas fa-headphones-alt mt-2"></i>
                             <div class="address-info">
-                                <h6>+(704) 279-1249 </h6>
-                                <p>24 X 7 online support </p>
+                                <h6>No Telephone</h6>
+                                <p>{{ Cache::get('tl')[0]->no }} </p>
                             </div>
                         </li>
                     </ul>
                 </div>
-                <div class="follow-us mt-4 mt-md-5">
-                    <h6 class="text-white mb-4">Follow Us </h6>
-                    <ul class="list-unstyled">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-                </div>
+
             </div>
             <div class="col-md-8  mt-4 mt-md-0">
-                <h3 class="text-white mb-3">Sign up for our newsletter
+                <h3 class="text-white mb-3">Informasi Terbaru LSP PPHI
                 </h3>
-                <p class="lead  mb-4 mb-md-5">Sign up to our Newsletter to get the latest news and offers.</p>
-                <div class="row">
-                    <div class="col-sm-9">
-                        <form class="form-inline input-with-btn">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Enter your email">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
+
                 <div class="footer-link">
                     <div class="row">
                         <div class="col-sm-4 mt-4 mt-md-5">
-                            <h6 class="text-white">Discover</h6>
+                            <h6 class="text-white">Informasi</h6>
                             <ul class="list-unstyled">
-                                <li><a href="#"><span>About us</span></a></li>
-                                <li><a href="#"><span>Contact us</span></a></li>
-                                <li><a href="#"><span>Cookies policy</span></a></li>
+                                <li><a href="{{ url('tuk') }}"><span>Tempat Uji Kompetensi (TUK)</span></a></li>
+                                <li><a href="{{ url('pengumuman') }}"><span>Pengumuman</span></a></li>
+                                <li><a href="{{ url('prosedur-uji-kompetensi') }}"><span>Prosedur Uji
+                                            Kompetensi</span></a></li>
+                                <li><a href="{{ url('agenda') }}"><span>Agenda</span></a></li>
+
                             </ul>
                         </div>
-                        <div class="col-sm-8 mt-4 mt-md-5">
-                            <h6 class="text-white">Services</h6>
+                        <div class="col-sm-4 mt-4 mt-md-5">
+                            <h6 class="text-white">Berita & Pengumuman</h6>
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <ul class="list-unstyled">
-                                        <li><a href="#"><span>Accounting Outsourcing</span></a></li>
-                                        <li><a href="#"><span>Acquisitions Consulting</span></a></li>
-                                        <li><a href="#"><span>Financial Planning</span></a></li>
+                                        <li><a href="{{ url('berita') . '?k=2' }}"><span>Berita</span></a></li>
+                                        <li><a href="{{ url('pengumuman') }}"><span>Pengumuman</span></a></li>
                                     </ul>
                                 </div>
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled">
-                                        <li><a href="#">Investment Management</a></li>
-                                        <li><a href="#"><span>Payroll Outsourcing</span></a></li>
-                                        <li><a href="#"><span>Taxation Advisory</span></a></li>
-                                    </ul>
-                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4 mt-4 mt-md-5">
+                            <div class="follow-us ">
+                                <h6 class="text-white mb-4">Follow Us </h6>
+                                <ul class="list-unstyled">
+                                    <li><a href="{{ Cache::get('tl')[0]->facebook }}"><i
+                                                class="fab fa-3x fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ Cache::get('tl')[0]->twitter }}"><i
+                                                class="fab fa-3x fa-twitter"></i></a></li>
+                                    <li><a href="{{ Cache::get('tl')[0]->ig }}"><i
+                                                class="fab fa-3x fa-instagram"></i></a>
+                                    </li>
+                                    <li><a href="{{ Cache::get('tl')[0]->wa }}"><i
+                                                class="fab fa-whatsapp fa-3x"></i></a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -96,10 +92,10 @@
                             <script>
                                 document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))
                             </script>
-                        </span> <a href="index.html"> Finaxo </a> All Rights Reserved </p>
+                        </span> <a href="index.html"> LSP PPHI </a> All Rights Reserved </p>
                 </div>
                 <div class="col-md-6  mt-2 mt-md-0 copyright text-md-end">
-                    Develop and design by <a href="#"> Potenza Global Solutions</a>
+                    Develop and design by <a href="https://www.instagram.com/antangdev/"> Antangdev</a>
                 </div>
             </div>
         </div>

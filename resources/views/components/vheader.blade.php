@@ -9,18 +9,23 @@
                         <div class="d-block d-md-flex align-items-center text-center">
                             <div class="me-3 d-inline-block">
                                 <a href="mailto:info@example.com"><i
-                                        class="fas fa-envelope me-2 fa-flip-horizontal"></i>info@example.com</a>
+                                        class="fas fa-envelope me-2 fa-flip-horizontal"></i>{{ Cache::get('tl')[0]->email }}</a>
                             </div>
                             <div class="me-auto d-inline-block">
-                                <a href="tel:1-800-555-1234"><i class="fa fa-phone me-2 fa fa-flip-horizontal"></i>(007)
-                                    123 456 7890</a>
+                                <a href="#"><i
+                                        class="fa fa-phone me-2 fa fa-flip-horizontal"></i>{{ Cache::get('tl')[0]->no }}</a>
                             </div>
                             <div class="social d-inline-block">
                                 <ul class="list-unstyled">
-                                    <li><a href="#"> <i class="fab fa-facebook-f"></i> </a></li>
-                                    <li><a href="#"> <i class="fab fa-twitter"></i> </a></li>
-                                    <li><a href="#"> <i class="fab fa-pinterest-p"></i> </a></li>
-                                    <li><a href="#"> <i class="fab fa-linkedin-in"></i> </a></li>
+                                    <li><a href="{{ Cache::get('tl')[0]->facebook }}"> <i
+                                                class="fab fa-facebook-f"></i>
+                                        </a></li>
+                                    <li><a href="{{ Cache::get('tl')[0]->twitter }}"> <i class="fab fa-twitter"></i>
+                                        </a></li>
+                                    <li><a href="{{ Cache::get('tl')[0]->wa }}"> <i class="fab fa-whatsapp"></i>
+                                        </a></li>
+                                    <li><a href="{{ Cache::get('tl')[0]->ig }}"> <i class="fab fa-instagram"></i>
+                                        </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -33,7 +38,7 @@
         <div class="container position-relative">
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"><i
                     class="fas fa-align-left"></i></button>
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ url('/') }}">
                 <img class="img-fluid" src="{{ asset('logo/lsp.png') }}" alt="logo">
             </a>
             <div class="navbar-collapse collapse justify-content-end justify-content-xl-center">
@@ -47,26 +52,24 @@
                         <a class="nav-link" href="{{ url('profil') }}">Profil</a>
 
                     </li>
+                    @php
+                        $value = Cache::remember('skemas', 30, function () {
+                            return DB::table('skemas')
+                                ->select('id', 'judul')
+                                ->get();
+                        });
+                    @endphp
                     <li class="dropdown nav-item @if (Request::segment(1) == 'skema') active @endif">
                         <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown">Daftar Skema<i
                                 class="fas fa-chevron-down fa-xs"></i></a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ url('skema/skema1') }}"><span>SKEMA SERTIFIKASI
-                                        OKUPASIJURU
-                                        SEMBELIH HALAL</span></a></li>
-                            <li><a class="dropdown-item" href="{{ url('skema/skema1') }}"><span>SKEMA SERTIFIKASI
-                                        OKUPASI
-                                        AUDITOR HALAL
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="{{ url('skema/skema1') }}"><span>Skema sertifikasi
-                                        Okupasi Penyelia Halal
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="{{ url('skema/skema1') }}"><span>Skema sertifikasi
-                                        Klaster Penerapan Sistem Jaminan Halal (SJH)
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="{{ url('skema/skema1') }}"><span>Skema sertifikasi
-                                        klaster Pelaksanaan Analisis Kimia Pendukung Manajemen Halal
-                                    </span></a></li>
+                            @foreach (Cache::get('skemas') as $item)
+                                <li><a class="dropdown-item"
+                                        href="{{ url('skema/') . '/' . $item->id }}"><span>{{ $item->judul }}</span></a>
+                                </li>
+                            @endforeach
+
+
                         </ul>
                     </li>
                     <li class="dropdown nav-item">
@@ -75,11 +78,12 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{ route('tuk') }}"><span>Tempat Uji Kompetensi
                                         (TUK)</span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>Pengumuman
+                            <li><a class="dropdown-item" href="{{ url('pengumuman') }}"><span>Pengumuman
                                     </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>Prosedur Uji Kompetensi
+                            <li><a class="dropdown-item" href="{{ url('prosedur-uji-kompetensi') }}"><span>Prosedur
+                                        Uji Kompetensi
                                     </span></a></li>
-                            <li><a class="dropdown-item" href="{{ route('faq') }}"><span>FAQ
+                            <li><a class="dropdown-item" href="{{ url('agenda') }}"><span>Agenda
                                     </span></a></li>
                         </ul>
                     </li>
@@ -89,42 +93,7 @@
                     <li class="dropdown nav-item @if (Request::segment(1) == 'kontak') active @endif">
                         <a class="nav-link" href="{{ route('kontak') }}">Kontak</a>
                     </li>
-                    <li class="dropdown nav-item">
-                        <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown">Unduh Formulir<i
-                                class="fas fa-chevron-down fa-xs"></i></a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="casestudy.html"><span>Formulir Pendaftaran Skema
-                                        Okupasijuru
-                                        Sembelih Halal</span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>Formulir Pendaftaran Skema
-                                        Okupasi Auditor Halal
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>Formulir Pendaftaran Skema
-                                        Okupasi Penyelia Halal
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>Formulir Pendaftaran Skema
-                                        Klaster Penerapan Sistem Jaminan Halal (SJH)
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>Formulir Pendaftaran Skema
-                                        klaster Pelaksanaan Analisis Kimia Pendukung Manajemen Halal
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy.html"><span>SKKNI Skema
-                                        Okupasijuru
-                                        Sembelih Halal</span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>SKKNI Skema
-                                        Okupasi Auditor Halal
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>SKKNI Skema
-                                        Okupasi Penyelia Halal
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>SKKNI Skema
-                                        Klaster Penerapan Sistem Jaminan Halal (SJH)
-                                    </span></a></li>
-                            <li><a class="dropdown-item" href="casestudy-single.html"><span>SKKNI Skema
-                                        klaster Pelaksanaan Analisis Kimia Pendukung Manajemen Halal
-                                    </span></a></li>
-                        </ul>
-                    </li>
+
                     <li class="dropdown nav-item header-search">
                         <div class="search">
                             <a class="search-btn not_click" href="javascript:void(0);"></a>
@@ -141,7 +110,8 @@
                     </li>
                 </ul>
             </div>
-            <a class="btn btn-primary btn-md me-5 me-xl-0 d-none d-sm-block" href="#"> LOGIN </a>
+            <a class="btn btn-primary btn-md me-5 me-xl-0 d-none d-sm-block"
+                href="{{ Cache::get('tl')[0]->linkregister }}"> DAFTAR SEKARANG </a>
         </div>
     </nav>
 </header>

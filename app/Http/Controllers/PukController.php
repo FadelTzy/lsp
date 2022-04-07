@@ -56,6 +56,14 @@ class PukController extends Controller
     {
         # code...
         $data = Puk::latest()->first();
+        if ($data == null) {
+            $data =  Puk::create([
+                'judul' => 'Prosedur Uji Kompetensi',
+                'text' => '...',
+                'slug' => Str::slug('Prosedur Uji Kompetensi'),
+            ]);
+            $data = Puk::latest()->first();
+        }
         return view('admin.Puk', compact('data'));
     }
     public function store(Request $request)

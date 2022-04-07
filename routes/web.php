@@ -13,6 +13,8 @@ use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\PukController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\SkemaController;
+use App\Http\Controllers\UnitKompetensiController;
+use App\Http\Controllers\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +32,20 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('dashboard', [adminController::class, 'index'])->name('dashboard.admin');
+        Route::get('profil', [adminController::class, 'show'])->name('admin.show');
+        Route::post('profil', [adminController::class, 'store'])->name('admin.store');
+
+        //user
+        Route::get('user', [adminController::class, 'uindex'])->name('user.index');
+        Route::post('user', [adminController::class, 'ustore'])->name('user.store');
+        Route::post('user/edit', [adminController::class, 'uedit'])->name('user.edit');
+        Route::delete('user/{id}', [adminController::class, 'udestroy']);
+
         Route::resource('profil-lsp', ProfillspController::class);
         Route::post('profil-lsp/kontak', [ProfillspController::class, 'storek'])->name('profil-lsp.storek');
+        Route::post('profil-lsp/beranda', [ProfillspController::class, 'storeb'])->name('profil-lsp.storeb');
+        Route::post('profil-lsp/link', [ProfillspController::class, 'storel'])->name('profil-lsp.storel');
+
         Route::resource('anggota-lsp', AnggotaController::class);
         Route::post('anggota-lsp/storeu', [AnggotaController::class, 'storeu'])->name('anggota-lsp.storeu');
         //kategori
@@ -79,20 +93,40 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('skema', [SkemaController::class, 'store'])->name('skema.store');
         Route::post('skema/edit/{id}', [SkemaController::class, 'edit'])->name('skema.edit');
         Route::post('skema/gambar', [SkemaController::class, 'gambar']);
+        //Unit
+        Route::get('unit', [UnitKompetensiController::class, 'index'])->name('unit.index');
+        Route::post('unit', [UnitKompetensiController::class, 'store'])->name('unit.store');
+        Route::post('unit/edit', [UnitKompetensiController::class, 'edit'])->name('unit.edit');
+        Route::delete('unit/{id}', [UnitKompetensiController::class, 'destroy']);
+        //banner
+        Route::get('banner', [BannerController::class, 'index'])->name('banner.index');
+        Route::post('banner', [BannerController::class, 'store'])->name('banner.store');
+        Route::post('banner/gambar', [BannerController::class, 'gambar']);
+        Route::post('banner/edit', [BannerController::class, 'edit']);
+        Route::delete('banner/{id}', [BannerController::class, 'destroy']);
     });
 });
-Route::get('/', [wv::class, 'index'])->name('beranda');
-Route::get('/kontak', [wv::class, 'kontak'])->name('kontak');
-Route::get('/berita', [wv::class, 'berita'])->name('berita');
-Route::get('/skema', [wv::class, 'skema'])->name('skema');
-Route::get('/profil', [wv::class, 'profil'])->name('profil');
+Route::group(['middleware' => ['lspMenu']], function () {
+    Route::get('/', [wv::class, 'index'])->name('beranda');
+    Route::get('/kontak', [wv::class, 'kontak'])->name('kontak');
+    Route::get('/berita', [wv::class, 'berita'])->name('berita');
+    Route::get('/skema', [wv::class, 'skema'])->name('skema');
+    Route::get('/profil', [wv::class, 'profil'])->name('profil');
 
-Route::get('/skema/skema1', [wv::class, 'skemaslug']);
+    Route::get('/skema/{skema}', [wv::class, 'skemaslug']);
 
-Route::get('/faq', [wv::class, 'faq'])->name('faq');
+    Route::get('/faq', [wv::class, 'faq'])->name('faq');
 
-Route::get('/berita/slug', [wv::class, 'beritaslug']);
-Route::get('/tuk', [wv::class, 'tuk'])->name('tuk');
+    Route::get('/berita/{slug}', [wv::class, 'beritaslug']);
+    Route::get('/pengumuman', [wv::class, 'pengumuman']);
+    Route::get('/agenda', [wv::class, 'agenda']);
+    Route::get('/agenda/{slug}', [wv::class, 'agendaslug']);
+
+    Route::get('/prosedur-uji-kompetensi', [wv::class, 'puk']);
+
+    Route::get('/tuk', [wv::class, 'tuk'])->name('tuk');
+});
+
 
 
 Route::get('/dashboard', function () {

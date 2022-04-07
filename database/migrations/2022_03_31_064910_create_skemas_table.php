@@ -21,7 +21,7 @@ return new class extends Migration
             $table->longText('syarat')->nullable();
             $table->text('registrasi')->nullable();
             $table->string('skkni')->nullable();
-            $table->integer('id_unit')->nullable();
+            $table->integer('status')->nullable();
             $table->string('meta')->nullable();
             $table->string('slug');
             $table->timestamps();

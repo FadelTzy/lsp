@@ -76,7 +76,14 @@
                                 <div class="col-md-7">
                                     <label>Nama Link</label>
                                     <div class="input-group">
-                                        <input type="text" name="nama" placeholder="Input Link" class="form-control" />
+                                        <input type="text" name="nama" placeholder="Input Nama Link"
+                                            class="form-control" />
+                                        <span class="input-group-addon"><i class=" fa fa-check"></i></span>
+                                    </div><!-- input-group -->
+                                    <br>
+                                    <label>Link</label>
+                                    <div class="input-group">
+                                        <input type="text" name="link" placeholder="Input Link" class="form-control" />
                                         <span class="input-group-addon"><i class=" fa fa-check"></i></span>
                                     </div><!-- input-group -->
                                     <br>
@@ -130,8 +137,14 @@
                                             class="form-control" />
                                         <span class="input-group-addon"><i class=" fa fa-check"></i></span>
                                     </div><!-- input-group -->
-
-
+                                    <br>
+                                    <label>Link</label>
+                                    <div class="input-group">
+                                        <input type="text" id="linku" name="link" placeholder="Input Link"
+                                            class="form-control" />
+                                        <span class="input-group-addon"><i class=" fa fa-check"></i></span>
+                                    </div><!-- input-group -->
+                                    <br>
                                 </div>
                                 <div class="col-md-5">
                                     <label>Logo</label>
@@ -167,7 +180,7 @@
     <script src="{{ asset('chain/responsive/1.0.1/js/dataTables.responsive.js') }}"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                ">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ">
     </script>
     <script>
         $.ajaxSetup({
@@ -273,7 +286,7 @@
             var data = $(this).serialize();
             $.LoadingOverlay("show");
             $.ajax({
-                url: '{{ url('admin/tuk/edit') }}',
+                url: '{{ url('admin/link/edit') }}',
                 data: new FormData(this),
                 type: "POST",
                 contentType: false,
@@ -316,6 +329,8 @@
             $('#myModalu').modal('show');
             $("#idu").val(id.id);
             $("#namau").val(id.judul);
+            $("#linku").val(id.meta);
+
             if (id.gambar != null) {
                 var html = `<img src="${url + '/gambar/link/' + id.gambar}"
                                     class="img-thumbnail mt-1" id="previewu" alt="">

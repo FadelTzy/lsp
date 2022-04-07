@@ -54,7 +54,6 @@ class LinkController extends Controller
             $data = ['status' => 'error', 'data' => $validator->errors()];
             return $data;
         }
-
         if (request()->file('file')) {
             $path = '/gambar/link/' . $data->gambar;
             $bases =  $_SERVER['DOCUMENT_ROOT'];
@@ -71,12 +70,11 @@ class LinkController extends Controller
             $nama_file = str_replace(' ', '_', time() . "_" . $gmbr->getClientOriginalName());
             $tujuan_upload = 'gambar/link';
             $gmbr->move($tujuan_upload, $nama_file);
-
             $data->gambar = $nama_file ?? null;
         }
         $data->judul = $request->nama;
 
-        $data->meta = $request->tiklos;
+        $data->meta = $request->link;
 
         $data->save();
 
@@ -132,7 +130,7 @@ class LinkController extends Controller
         }
         $data =  Link::create([
             'gambar' => $nama_file ?? null,
-            'meta' => $request->nama,
+            'meta' => $request->link,
             'judul' => $request->nama,
         ]);
         if ($data) {

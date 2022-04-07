@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>SIM GURU</title>
+    <title>Admin LSP PPHI</title>
 
     <link href="{{ asset('chain/css/style.default.css') }}" rel="stylesheet">
     @yield('staffcss')

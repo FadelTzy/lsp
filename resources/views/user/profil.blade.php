@@ -1,12 +1,14 @@
 @extends('base')
 
 @section('css')
+    <link rel="stylesheet" href="{{ asset('finaxo/css/owl-carousel/owl.carousel.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('finaxo/css/swiper/swiper.min.css') }}" />
+@endsection
+@section('meta')
+    {!! SEO::generate(true) !!}
 @endsection
 
-
 @section('content')
-    <!--=================================
-                                                                                                                                                                Inner Header -->
     <div class="inner-header bg-light">
         <div class="container">
             <div class="row align-items-center">
@@ -23,11 +25,8 @@
             </div>
         </div>
     </div>
-    <!--=================================
-                                                                                                                                                                Inner Header -->
-    <!--=================================
-                                                                                                              Tab -->
-    <section class="space-ptb">
+
+    <section class="" style="margin-top: 15px; margin-bottom: 20px">
         <div class="container">
             <div class="row d-flex align-content-center flex-wrap">
 
@@ -55,37 +54,15 @@
                                 <div class="tab-pane fade show active" id="v-pills-who-we-are" role="tabpanel"
                                     aria-labelledby="v-pills-who-we-are-tab">
                                     <div class="row">
-                                        <p>Untuk memberi kepastian hukum tentang jaminan produk halal yang termaktub dalam
-                                            UU Nomor 33 Tahun 2014 dan UU Nomor 11 Tahun 2020 tentang Cipta Kerja yang
-                                            diikuti dengan terbitnya PP Nomor 39 Tahun 2021 tentang Penyelenggaraan Jaminan
-                                            Produk Halal yang mewajibkan Negara menjamin setiap pemeluk agama Islam
-                                            mendapatkan perlindungan dan jaminan tentang kehalalan suatu produk.</p>
-                                        <p>
-                                            Tahap pertama, kewajiban ini akan diberlakukan terlebih dahulu kepada produk
-                                            makanan dan minuman, serta produk jasa yang terkait dengan keduanya. Prosesnya
-                                            sertifikasi akan berlangsung dari 17 Oktober 2019 sampai 17 Oktober 2024. Tahap
-                                            kedua, kewajiban sertifikasi akan diberlakukan untuk selain produk makanan dan
-                                            minuman, tahap kedua ini akan dimulai 17 Oktober 2021.</p>
-                                        <p>
-                                            Agar penerapan sistem jaminan halal pada industri makanan dan minuman dapat
-                                            berjalan dengan baik, diperlukan SDM yang memiliki kualifikasi sesuai dengan
-                                            Standar Kompetensi Kerja Nasional Indonesia yang ditetapkan oleh pemerintah.
-                                            Berdasarkan UU No. 13 tahun 2003 tentang Ketenagakerjaan dan PP Nomor 10 tahun
-                                            2018 BNSP adalah Lembaga otoritas sertifikasi kompetensi personil yang dapat
-                                            didelegasikan kepada Lembaga Sertifikasi Profesi (LSP) sesuai bidang kompetensi
-                                            terkait setelah mendapatkan lisensi dari BNSP.</p>
-                                        <p>
-                                            Berdasarkan hal tersebut di atas, maka beberapa praktisi, akademisi dan asosiasi
-                                            bidang halal serta lembaga pelatihan kerja bidang halal sepakat mendirikan
-                                            Lembaga Sertifikasi Profesi (LSP) Penyelenggara Produk Halal Indonesia (PPHI).
-                                        </p>
+                                        <h6 class="mb-3">Tentang LSP PPHI</h6>
+                                        {!! $profil->tentang !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-our-vision" role="tabpanel"
                                     aria-labelledby="v-pills-our-vision-tab">
                                     <h6 class="mb-3">Visi</h6>
-                                    <p>Menjadi Lembaga Sertifikasi Profesi di bidang halal yang professional, unggul,
-                                        terpercaya dan berdaya saing global di tahun 2030.</p>
+                                    {!! $profil->visi !!}
+
 
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-our-mission" role="tabpanel"
@@ -94,35 +71,15 @@
 
                                         <div class="col-lg-12">
                                             <h6 class="mb-3">Misi </h6>
-                                            <ul class="list">
-                                                <li><i class="fas fa-check"></i> Menyelenggarakan sertifikasi kompetensi
-                                                    bagi penyelenggara produk halal yang professional dan independent </li>
-                                                <li><i class="fas fa-check"></i>Memelihara dan meningkatkan kompetensi
-                                                    personil LSP untuk mendukung penerapan pelayanan prima </li>
-                                                <li><i class="fas fa-check"></i> Memelihara dan mengembangkan skema
-                                                    sertifikasi kompetensi sesuai kebutuhan industri </li>
-                                                <li><i class="fas fa-check"></i> Memelihara dan mengembangkan tempat uji
-                                                    kompetensi sesuai kebutuhan skema sertifikasi. </li>
-                                                <li><i class="fas fa-check"></i> Mengembangkan system manajemen berbasis
-                                                    IT untuk peningkatkan kinerja pelayanan </li>
-                                                <li><i class="fas fa-check"></i> Menjalin kerjasama dengan berbagai pihak
-                                                    dalam rangka mewujudkan Indonesia kompeten dan ekosistem halal</li>
-                                            </ul>
+                                            {!! $profil->misi !!}
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="v-pills-our-history" role="tabpanel"
                                     aria-labelledby="v-pills-our-history-tab">
                                     <h6 class="mb-3">Kebijakan Mutu</h6>
-                                    <ul class="list">
-                                        <li><i class="fas fa-check"></i> 1. Memberikan jaminan kualitas (quality
-                                            insurance) dan jaminan keselamatan (saffety insurance) dalam proses sertifikasi
-                                            kompetensi kerja dari LSP-PPHI yang independen sesuai pedoman BNSP </li>
-                                        <li><i class="fas fa-check"></i>M2. Menjadikan LSP-PPHI berkualitas, komitmen dan
-                                            konsisten terhadap moral, ramah, berintegritas dan professional serta taat hukum
-                                        </li>
-
-                                    </ul>
+                                    {!! $profil->mutu !!}
                                 </div>
                             </div>
                         </div>
@@ -131,13 +88,7 @@
             </div>
         </div>
     </section>
-    <!--=================================
-                                                                                                              Tab -->
 
-
-
-    <!--=================================
-                                                                                                              Team -->
     <section class="space-ptb">
         <div class="container">
             <div class="row">
@@ -218,10 +169,11 @@
             </div>
         </div>
     </section>
-    <!--=================================
-                                                                                                              Team -->
 @endsection
 
 
 @push('js')
+    <script src="{{ asset('finaxo/js/owl-carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('finaxo/js/swiper/swiper.min.js') }}"></script>
+    <script src="{{ asset('finaxo/js/swiperanimation/SwiperAnimation.min.js') }}"></script>
 @endpush

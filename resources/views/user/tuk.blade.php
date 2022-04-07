@@ -2,11 +2,11 @@
 
 @section('css')
 @endsection
-
+@section('meta')
+    {!! SEO::generate(true) !!}
+@endsection
 
 @section('content')
-    <!--=================================
-                                                                                                                                              Inner Header -->
     <div class="inner-header bg-light">
         <div class="container">
             <div class="row align-items-center">
@@ -24,98 +24,33 @@
         </div>
     </div>
     <!--=================================
-                                                                                                                                                Inner Header -->
+                                                                                                                                                                                        Inner Header -->
 
     <!--=================================
-                                                                                                                                                Case Study -->
+                                                                                                                                                                                        Case Study -->
     <section class="space-ptb case-study">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-sm-6 pb-2 mb-4">
-                    <div class="case-study-item">
-                        <div class="case-study-img">
-                            <img class="img-fluid" src="{{ asset('gambar/polipangkep.jpeg') }}" alt="">
-                            <a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9"><i
-                                    class="fa fa-map-marker"></i></a>
-                        </div>
-                        <div class="case-study-info">
-                            <h6 class="case-study-title"><a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9">TUK
-                                    PT. Ahmad Putra
-                                    Sejahtera Training Center, Makassar</a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 pb-2 mb-4">
-                    <div class="case-study-item">
-                        <div class="case-study-img">
-                            <img class="img-fluid" src="{{ asset('gambar/polipangkep.jpeg') }}" alt="">
-                            <a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9"><i
-                                    class="fa fa-map-marker"></i></a>
-                        </div>
-                        <div class="case-study-info">
-                            <h6 class="case-study-title"><a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9">TUK
-                                    Halal Science
-                                    Center
-                                    Politeknik Pertanian Negeri Pangkep, Pangkep</a>
-                            </h6>
+                @foreach ($tuk as $item)
+                    <div class="col-lg-4 col-sm-6 pb-2 mb-4">
+                        <div class="case-study-item">
+                            <div class="case-study-img">
+                                <img class="img-fluid" src="{{ asset('gambar/tuk/') . '/' . $item->gambar }}" alt="">
+                                <a target="_blank" href="{{ $item->maps }}"><i class="fa fa-map-marker"></i></a>
+                            </div>
+                            <div class="case-study-info">
+                                <h6 class="case-study-title"><a target="_blank" href="{{ $item->maps }}">
+                                        {{ $item->lokasi }}</a>
+                                </h6>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-sm-6 pb-2 mb-4">
-                    <div class="case-study-item">
-                        <div class="case-study-img">
-                            <img class="img-fluid" src="{{ asset('gambar/polipangkep.jpeg') }}" alt="">
-                            <a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9"><i
-                                    class="fa fa-map-marker"></i></a>
-                        </div>
-                        <div class="case-study-info">
-                            <h6 class="case-study-title"><a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9">TUK
-                                    RPH Manggala,
-                                    Makassar</a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
-
-                <div class="col-lg-4 col-sm-6">
-                    <div class="case-study-item">
-                        <div class="case-study-img">
-                            <img class="img-fluid" src="{{ asset('gambar/polipangkep.jpeg') }}" alt="">
-                            <a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9"><i
-                                    class="fa fa-map-marker"></i></a>
-                        </div>
-                        <div class="case-study-info">
-                            <h6 class="case-study-title"><a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9">TUK
-                                    Politeknik
-                                    Negeri Ujung
-                                    Pandang, Makassar</a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <div class="case-study-item">
-                        <div class="case-study-img">
-                            <img class="img-fluid" src="{{ asset('gambar/polipangkep.jpeg') }}" alt="">
-                            <a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9"><i
-                                    class="fa fa-map-marker"></i></a>
-                        </div>
-                        <div class="case-study-info">
-                            <h6 class="case-study-title"><a target="_blank" href="https://goo.gl/maps/bhx9e6KpUEdtDzzH9">TUK
-                                    Fakultas Sains
-                                    UIN
-                                    Alauddin, Makassar</a>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-    <!--=================================
-                                                                                                                                                Case Study -->
+
     <section class="space-pb ">
         <div class="container">
             <div class="row">

@@ -47,7 +47,6 @@ class BeritaController extends Controller
         # code...
         if (request()->ajax()) {
             return Datatables::of(Berita::with('kategori')->get())->addIndexColumn()->addColumn('aksi', function ($data) {
-                $dataj = json_encode($data);
 
                 $btn = "<ul class='list-inline mb-0'>
                 <li class='list-inline-item'>
