@@ -2,6 +2,17 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/u1664896/public_html/
+   - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R bootstrap $DEPLOYPATH
+    - /bin/cp -R config $DEPLOYPATH
+    - /bin/cp -R database $DEPLOYPATH
+    - /bin/cp -R lang $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R resources $DEPLOYPATH
+    - /bin/cp -R routes $DEPLOYPATH
+    - /bin/cp -R storage $DEPLOYPATH
+    - /bin/cp -R test $DEPLOYPATH
+    - /bin/cp -R vendor $DEPLOYPATH
     - /bin/cp .editorconfig $DEPLOYPATH
     - /bin/cp .env $DEPLOYPATH
     - /bin/cp .gitattributes $DEPLOYPATH
@@ -16,14 +27,3 @@ deployment:
     - /bin/cp package-lock.json $DEPLOYPATH
     - /bin/cp tailwind.config.js $DEPLOYPATH
     - /bin/cp webpack.mix.js $DEPLOYPATH
-    - /bin/cp -R app $DEPLOYPATH
-    - /bin/cp -R bootstrap $DEPLOYPATH
-    - /bin/cp -R config $DEPLOYPATH
-    - /bin/cp -R database $DEPLOYPATH
-    - /bin/cp -R lang $DEPLOYPATH
-    - /bin/cp -R public $DEPLOYPATH
-    - /bin/cp -R resources $DEPLOYPATH
-    - /bin/cp -R routes $DEPLOYPATH
-    - /bin/cp -R storage $DEPLOYPATH
-    - /bin/cp -R test $DEPLOYPATH
-    - /bin/cp -R vendor $DEPLOYPATH
